@@ -33,7 +33,7 @@ class App extends Component {
 		curDate.month = date.month
 		curDate.flag = flag
 		curDate.day = date.day
-		const char = this.props.connector
+		const char = this.props.connector || '-'
 		this.props.onChange(`${curDate.year}${char}${curDate.month}${char}${curDate.day}`, date)
 		this.setState({ curDate })
 	}
@@ -47,11 +47,11 @@ class App extends Component {
 		this.props.onChange(dateStr, date)
 		this.setState({ curDate: date })
 	}
-	chooseYearMonth = () => {
-		this.setState({chooseType: null})
+	chooseYearMonth = (type) => {
+		this.setState({chooseType: null, type})
 	}
     render() {
-		const {curDate, chooseType} = this.state;
+		const {curDate, chooseType, type} = this.state;
         return (
 			<div className="calendar" style={{width: this.props.width || 100, minWidth: 250}}>
 				<label className="output">{`${curDate.year}-${curDate.month}-${curDate.day < 10 ? '0' + curDate.day : curDate.day}`}</label>
@@ -60,7 +60,8 @@ class App extends Component {
 					UpdateDate={this.UpdateDate} 
 					chooseType={this.chooseType}
 					monthName={this.monthName}
-					monthYear={this.chooseYearMonth}/>
+					monthYear={this.chooseYearMonth}
+					type={type}/>
 				<Body 		
 					selectedDate={curDate}  
 					chooseType={chooseType} 

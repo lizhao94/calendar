@@ -8,13 +8,15 @@ class Header extends Component {
             selectedDate: props.selectedDate
         }
         this.monthName = props.monthName || ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+        this.type = props.type
 	}
     onSwitchMonth = flag => {
         return () => {
             const {year, month, day} = this.props.selectedDate
+            if(this.props.type) this.showType = ''
             const type = this.showType
             let pMonth, pYear, pDay
-            if(! type){
+            if(type !== 'month'){
                 if(flag === 1 && month === 12){
                     pMonth = 1
                     pYear = year + 1

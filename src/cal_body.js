@@ -82,7 +82,7 @@ class Header extends Component {
             curDate[type] = record
             const char = this.props.char
             this.props.getDate(`${curDate.year}${char}${curDate.month}${char}${curDate.day}`, curDate)
-            this.props.chooseYearMonth()
+            this.props.chooseYearMonth(type)
             this.componentWillMount({
                 curDate
             })
