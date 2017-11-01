@@ -70,7 +70,6 @@ class Header extends Component {
             }
             curDate.day = day % 100;
             const char = this.props.char;
-            console.log(`${curDate.year}${char}${curDate.month}${char}${curDate.day}`)
             this.props.getDate(`${curDate.year}${char}${curDate.month}${char}${curDate.day}`, curDate);
             this.setState({
                 curDate
@@ -123,7 +122,6 @@ class Header extends Component {
     }
     render() {
         const {monthDaysList, curDate, chooseType} = this.state
-        console.log(this.weekName)
         let td = [];
         return (
             <div className="calendar-body">
@@ -141,10 +139,11 @@ class Header extends Component {
                         {
                             chooseType === 'year' ? 
                             this.yearList.map((rec, idx) => {
+                                const active = curDate.year === rec ? 'active' : 'o'
                                 if((idx + 1) % 4){
-                                    td.push(<td key={idx}><div onClick={this.chooseYearMonth(rec, 'year')}>{rec}</div></td>)
+                                    td.push(<td key={idx}><div onClick={this.chooseYearMonth(rec, 'year')} className={active}>{rec}</div></td>)
                                 }else{
-                                    td.push(<td key={idx}><div onClick={this.chooseYearMonth(rec, 'year')}>{rec}</div></td>)
+                                    td.push(<td key={idx}><div onClick={this.chooseYearMonth(rec, 'year')} className={active}>{rec}</div></td>)
                                     let _td = td
                                     td = []
                                     return <tr key={idx} className="yearMonthList">{_td}</tr>
@@ -153,10 +152,11 @@ class Header extends Component {
                             })
                             : chooseType === 'month' ?
                             this.monthName.map((rec, idx) => {
+                                const active = rec === this.monthName[curDate.month - 1] ? 'active' : 'o'
                                 if((idx + 1) % 4){
-                                    td.push(<td key={idx}><div onClick={this.chooseYearMonth(idx + 1, 'month')}>{rec}</div></td>)
+                                    td.push(<td key={idx}><div onClick={this.chooseYearMonth(idx + 1, 'month')} className={active}>{rec}</div></td>)
                                 }else{
-                                    td.push(<td key={idx}><div onClick={this.chooseYearMonth(idx + 1, 'month')}>{rec}</div></td>)
+                                    td.push(<td key={idx}><div onClick={this.chooseYearMonth(idx + 1, 'month')} className={active}>{rec}</div></td>)
                                     let _td = td
                                     td = []
                                     return <tr key={idx} className="yearMonthList">{_td}</tr>

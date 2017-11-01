@@ -32,6 +32,9 @@ class App extends Component {
 		curDate.year  = date.year
 		curDate.month = date.month
 		curDate.flag = flag
+		curDate.day = date.day
+		const char = this.props.connector
+		this.props.onChange(`${curDate.year}${char}${curDate.month}${char}${curDate.day}`, date)
 		this.setState({ curDate })
 	}
 
@@ -56,7 +59,8 @@ class App extends Component {
 					selectedDate={curDate} 
 					UpdateDate={this.UpdateDate} 
 					chooseType={this.chooseType}
-					monthName={this.monthName}/>
+					monthName={this.monthName}
+					monthYear={this.chooseYearMonth}/>
 				<Body 		
 					selectedDate={curDate}  
 					chooseType={chooseType} 

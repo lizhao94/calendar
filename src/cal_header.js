@@ -5,7 +5,7 @@ class Header extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-            // showType: ''
+            selectedDate: props.selectedDate
         }
         this.monthName = props.monthName || ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
 	}
@@ -13,7 +13,7 @@ class Header extends Component {
         return () => {
             const {year, month, day} = this.props.selectedDate
             const type = this.showType
-            let pMonth, pYear
+            let pMonth, pYear, pDay
             if(! type){
                 if(flag === 1 && month === 12){
                     pMonth = 1
@@ -27,12 +27,13 @@ class Header extends Component {
             }
             if(!flag){
                 const date = new Date()
-                pMonth = date.getMonth()
-                pMonth += 1
+                pMonth = date.getMonth() + 1
+                pDay = date.getDate()
                 pYear  = date.getFullYear()
+                this.props.monthYear()
             }
-            const _flag = type === 'year' ? flag : '';
-            this.props.UpdateDate({month: pMonth || month, year: pYear || year, day}, _flag)
+            const _flag = type === 'year' ? flag : ''
+            this.props.UpdateDate({month: pMonth || month, year: pYear || year, day: pDay || day}, _flag)
         }
     }
     onChooseDate = type => {
@@ -46,7 +47,7 @@ class Header extends Component {
         }
     } 
     render() {
-        const {selectedDate} = this.props
+        const {selectedDate} = this.state
         const type = this.state.showType
         return (
             <div className="calendar-header">
