@@ -1,0 +1,124 @@
+.calendar{
+  /* width: 350px; */
+  overflow: hidden;
+  font-size: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  background: #9708CC;
+  background-image: linear-gradient(135deg, #43CBFF 0%, #9708CC 100%);
+  color: #fff
+}
+.calendar-header{
+  overflow: hidden;
+  padding: 0 5px;
+}
+.weekname{
+  cursor: default !important;
+}
+.arrow{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+.arrow:after{
+  margin-left: 10px;
+  transition: all .5s;
+  content: "";
+  width: 7px;
+  height: 7px;
+  box-sizing: content-box;
+  position: relative;
+  display: inline-block;
+  top: 1px;
+} 
+.arrow-left{
+  float: left;
+}
+.arrow-left:after{
+  border-bottom: 3px solid #fff;
+  border-left: 3px solid #fff;
+  transform: rotate(45deg);
+  left: -3px
+}
+.arrow-right{
+  float: right
+}
+.arrow-right:after{
+  border-bottom: 3px solid #fff;
+  border-left: 3px solid #fff;
+  transform: rotate(225deg);
+  left: -5px
+}
+.yearMonth{
+  height: 40px;
+  width: calc(100% - 80px);
+  margin: 0;
+  float: left;
+  line-height: 40px;
+  text-align: center;
+}
+.yearMonth span{
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.today{
+  border: 1px solid #f60;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  border-radius: 100%;
+  transform: scale(.8);
+  color: #f60;
+  cursor: pointer;
+}
+
+.calendar-body,
+.calendar-body table{
+  width: 100%;
+}
+.calendar-body td,
+.calendar-body th{
+  width: calc(100% / 7); /*14.28%*/
+  text-align: center;
+}
+.calendar-body th{
+  padding: 8px 5px;
+}
+.calendar-body div{
+  margin: 5px;
+  cursor: pointer;
+  padding: 3px 0;
+  border-radius: 4px;
+}
+.calendar-body div:hover{
+  background: #e2b495
+}
+.active{
+  color: #fff;
+  background: #f60;
+}
+.other{
+  color: #c5c5c5;
+  /* cursor: no-drop !important; */
+}
+.calendar-body .yearMonthList td{
+  width: 25%;
+  height: 68px;
+}
+.output{
+  display: block;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 16px;
+}
