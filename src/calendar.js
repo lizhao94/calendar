@@ -54,7 +54,7 @@ class App extends Component {
 		const {curDate, chooseType, type} = this.state;
         return (
 			<div className="calendar" style={{width: this.props.width || 100, minWidth: 250}}>
-				<label className="output">{`${curDate.year}-${curDate.month}-${curDate.day < 10 ? '0' + curDate.day : curDate.day}`}</label>
+				<label className="output">{`${curDate.year}-${curDate.month < 10 ? '0' + curDate.month : curDate.month}-${curDate.day < 10 ? '0' + curDate.day : curDate.day}`}</label>
 				<Header 
 					selectedDate={curDate} 
 					UpdateDate={this.UpdateDate} 
